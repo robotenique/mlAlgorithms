@@ -67,7 +67,7 @@ J = computeCost(X, y, theta)
 print('cost: %0.4f ' % J)
 
 # Some gradient descent settings
-iterations = 200
+iterations = 5000
 alpha = 0.01
 
 # run gradient descent

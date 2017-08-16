@@ -35,5 +35,5 @@ def partial_derivative(hx, X, Y, ith):
 
 def hxClosure(thetaVector):
     def hx(Xi):
-        return sum((t*x for t, x in zip(thetaVector, Xi)))
+        return thetaVector.dot(Xi)
     return hx

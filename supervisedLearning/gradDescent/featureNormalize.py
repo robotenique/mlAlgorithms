@@ -8,24 +8,24 @@ def featureNormalize(X):
        is 1. This is often a good preprocessing step to do when
        working with learning algorithms.
     """
-    X_norm, mu, sigma = 0,0,0
-    # ====================== YOUR CODE HERE ======================
-    # Instructions: First, for each feature dimension, compute the mean
-    #               of the feature and subtract it from the dataset,
-    #               storing the mean value in mu. Next, compute the
-    #               standard deviation of each feature and divide
-    #               each feature by it's standard deviation, storing
-    #               the standard deviation in sigma.
-    #
-    #               Note that X is a matrix where each column is a
-    #               feature and each row is an example. You need
-    #               to perform the normalization separately for
-    #               each feature.
-    #
-    # Hint: You might find the 'mean' and 'std' functions useful.
-    #
-
-
-# ============================================================
-
+    n = X[0].size
+    m = X.T[0].size
+    X_norm = np.copy(X)
+    mu = np.mean(X, axis=0)
+    sigma = np.mean(X, axis=0)
+    norm_f = lambda x, n: (x - mu[n])/sigma[n]
+    for i in range(m):
+        for j in range(n):
+            X_norm[i][j] = norm_f(X_norm[i][j], j)
     return X_norm, mu, sigma
+
+def normEntry(Xi, mu, sigma):
+    """
+        Normalizes a single entry Xi, provided the mu and sigma matrices.
+        No size check is made; Xi is a LIST, not an numpy array.
+    """
+    singNorm = lambda x, i: (x - mu[i - 1])/sigma[i - 1]
+    # Don't count the first column
+    for i in range(1, len(Xi)):
+        Xi[i] = singNorm(Xi[i], i)
+    return Xi

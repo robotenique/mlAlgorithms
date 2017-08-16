@@ -7,7 +7,7 @@ def computeCost(X, y, theta):
     """
     m = y.size
     J = 0
-    hx = lambda xRow, omegaVec: sum((omI*xI for omI, xI in zip(omegaVec, xRow)))
+    hx = lambda xRow, omegaVec: omegaVec.dot(xRow)
     for xRow, yRow in zip(X, y):
         J += (hx(xRow, theta) - yRow)**2
     J /= 2*m

@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 from gradientDescentMulti import gradientDescentMulti
 from normalEqn import normalEqn
 from featureNormalize import featureNormalize
-
+from featureNormalize import normEntry
 # ================ Part 1: Feature Normalization ================
 
 print('Loading data ...')
@@ -29,46 +29,30 @@ X, mu, sigma = featureNormalize(X)
 print('[mu] [sigma]')
 print(mu, sigma)
 
+
 # Add intercept term to X
 X = np.concatenate((np.ones((m, 1)), X), axis=1)
 
-
-# ================ Part 2: Gradient Descent ================
-#
-# ====================== YOUR CODE HERE ======================
-# Instructions: We have provided you with the following starter
-#               code that runs gradient descent with a particular
-#               learning rate (alpha).
-#
-#               Your task is to first make sure that your functions -
-#               computeCost and gradientDescent already work with
-#               this starter code and support multiple variables.
-#
-#               After that, try running gradient descent with
-#               different values of alpha and see which one gives
-#               you the best result.
-#
-#               Finally, you should complete the code at the end
-#               to predict the price of a 1650 sq-ft, 3 br house.
-#
-# Hint: By using the 'hold on' command, you can plot multiple
-#       graphs on the same figure.
-#
-# Hint: At prediction, make sure you do the same feature normalization.
-#
-
 print('Running gradient descent ...')
-
 # Choose some alpha value
 alpha = 0.01
-num_iters = 400
-
+num_iters = 9000
 # Init Theta and Run Gradient Descent
 theta = np.zeros(3)
 theta, J_history = gradientDescentMulti(X, y, theta, alpha, num_iters)
-
 # Plot the convergence graph
 plt.plot(J_history, '-b')
+
+''' #Plot for some different alphas
+plt.gca().set_color_cycle(['red', 'green', 'blue', 'yellow'])
+for alpha in np.linspace(0.001, 0.6, 10):
+    num_iters = 500
+    # Init Theta and Run Gradient Descent
+    theta = np.zeros(3)
+    theta, J_history = gradientDescentMulti(X, y, theta, alpha, num_iters)
+    # Plot the convergence graph
+    plt.plot(J_history, '-b')
+'''
 plt.xlabel('Number of iterations')
 plt.ylabel('Cost J')
 plt.show()
@@ -79,7 +63,8 @@ print('Theta computed from gradient descent: ')
 print(theta)
 
 # Estimate the price of a 1650 sq-ft, 3 br house
-price = np.array([1,3,1650]).dot(theta)
+nPrice = normEntry([1, 1650, 3], mu, sigma)
+price = np.array(nPrice).dot(theta)
 
 print('Predicted price of a 1650 sq-ft, 3 br house')
 print('(using gradient descent): ')
@@ -118,7 +103,7 @@ print('Theta computed from the normal equations:')
 print(' %s \n' % theta)
 
 # Estimate the price of a 1650 sq-ft, 3 br house
-price = np.array([1, 3, 1650]).dot(theta)
+price = np.array([1, 1650, 3]).dot(theta)
 
 # ============================================================
 
