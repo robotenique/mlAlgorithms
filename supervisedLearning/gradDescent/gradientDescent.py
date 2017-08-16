@@ -1,4 +1,5 @@
 from computeCost import computeCost
+import numpy as np
 
 
 def gradientDescent(X, y, theta, alpha, num_iters):
@@ -11,20 +12,28 @@ def gradientDescent(X, y, theta, alpha, num_iters):
     # Initialize some useful values
     J_history = []
     m = y.size  # number of training examples
-
     for i in range(num_iters):
-        #   ====================== YOUR CODE HERE ======================
-        # Instructions: Perform a single gradient step on the parameter vector
-        #               theta.
-        #
-        # Hint: While debugging, it can be useful to print out the values
-        #       of the cost function (computeCost) and gradient here.
-        #
-
-
-        # ============================================================
-
-        # Save the cost J in every iteration
+        hx = hxClosure(theta) # Create a closure with the current theta Value
+        #Update each theta component simultaneously
+        for i in range(theta.size):
+            theta[i] -= alpha*partial_derivative(hx, X, y, i)
         J_history.append(computeCost(X, y, theta))
 
     return theta, J_history
+
+def partial_derivative(hx, X, Y, ith):
+    '''
+        Returns the partial_derivative in respect to the
+        ith theta specified;
+    '''
+    temp = 0
+    for i in range(Y.size):
+        temp += (hx(X[i]) - Y[i])*X[i][ith]
+    temp /= Y.size
+
+    return temp
+
+def hxClosure(thetaVector):
+    def hx(Xi):
+        return sum((t*x for t, x in zip(thetaVector, Xi)))
+    return hx

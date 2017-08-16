@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 import numpy as np
 
-def plotData(data):
+def plotData(data, show=True):
     """
     plots the data points and gives the figure axes labels of
     population and profit.
@@ -10,4 +10,5 @@ def plotData(data):
     plt.xlabel("City population (x 10000)")
     plt.ylabel("Profit (x $10000)")
     plt.plot(data[:, 0], data[:, 1], 'rx', markersize=10)
-    plt.show()
+    if show:
+        plt.show()
