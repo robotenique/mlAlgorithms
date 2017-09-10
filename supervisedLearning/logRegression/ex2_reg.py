@@ -41,7 +41,7 @@ def plotBoundary(theta, X, y):
 # Load Data
 #  The first two columns contains the X values and the third column
 #  contains the label (y).
-
+plt.figure(figsize=(15, 10))
 # data = pd.read_csv('ex2data2.txt', header=None, names=[1, 2, 3])
 data = np.loadtxt('ex2data2.txt', delimiter=',')
 X = data[:, 0:2]
@@ -83,7 +83,7 @@ print('Cost at initial theta (zeros): %f' % cost)
 
 # Optimize and plot boundary
 
-Lambda = 2.0
+Lambda = 1.0
 result = optimize(Lambda)
 theta = result.x
 cost = result.fun
@@ -107,7 +107,7 @@ input('Program paused. Press Enter to continue...')
 
 # ============= Part 3: Optional Exercises =============
 
-for Lambda in np.arange(0.0, 10.1, 1.0):
+for Lambda in np.linspace(0.0, 100.1, 8):
     result = optimize(Lambda)
     theta = result.x
     print('lambda = ' + str(Lambda))

@@ -23,7 +23,7 @@ def plotDecisionBoundary(theta, X, y):
     """
 
     # Plot Data
-    plt.figure()
+    plt.figure(figsize=(15, 10))
     plotData(X[:, 1:], y)
 
     if X.shape[1] <= 3:
