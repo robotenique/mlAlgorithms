@@ -1,6 +1,10 @@
-from numpy import asfortranarray, squeeze, asarray
-
+import numpy as np
 from gradientFunction import gradientFunction
+from sigmoid import sigmoid
+
+def innerG(theta, x, y, jth, Lambda,  mul):
+    ret = np.sum([(sigmoid(theta.dot(xi)) - yi)* xi[jth] for xi, yi in zip(x, y)])
+    return ret + mul*Lambda*theta[jth]
 
 
 def gradientFunctionReg(theta, X, y, Lambda):
@@ -11,13 +15,5 @@ def gradientFunctionReg(theta, X, y, Lambda):
     gradient of the cost w.r.t. to the parameters.
     """
     m = len(y)   # number of training examples
-
-# ====================== YOUR CODE HERE ======================
-# Instructions: Compute the gradient of a particular choice of theta.
-#               Compute the partial derivatives and set grad to the partial
-#               derivatives of the cost w.r.t. each parameter in theta
-
-
-# =============================================================
-
-    return grad
+    grad = np.array([innerG(theta, X, y, j, Lambda, 1 if j != 0 else 0) for j in range(theta.size)])
+    return 1/m * grad
