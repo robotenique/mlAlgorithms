@@ -42,7 +42,6 @@ def plotBoundary(theta, X, y):
 #  The first two columns contains the X values and the third column
 #  contains the label (y).
 plt.figure(figsize=(15, 10))
-# data = pd.read_csv('ex2data2.txt', header=None, names=[1, 2, 3])
 data = np.loadtxt('ex2data2.txt', delimiter=',')
 X = data[:, 0:2]
 y = data[:, 2]
@@ -105,7 +104,7 @@ print('Train Accuracy: %f' % acc)
 input('Program paused. Press Enter to continue...')
 
 
-# ============= Part 3: Optional Exercises =============
+# ============= Part 3: Different values of lambda =============
 
 for Lambda in np.linspace(0.0, 100.1, 8):
     result = optimize(Lambda)
