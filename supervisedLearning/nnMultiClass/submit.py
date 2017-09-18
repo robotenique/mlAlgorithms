@@ -6,7 +6,7 @@ from lrCostFunction import lrCostFunction
 from oneVsAll import oneVsAll
 from predictOneVsAll import predictOneVsAll
 from predict import predict
-from regr import gradientFunctionReg
+from mlCalcs import gradientFunctionReg
 
 homework = 'multi-class-classification-and-neural-networks'
 

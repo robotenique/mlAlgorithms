@@ -1,6 +1,6 @@
 import numpy as np
-from regr import costFunctionReg
-from regr import sigmoid
+from mlCalcs import costFunctionReg
+from mlCalcs import sigmoid
 
 
 def lrCostFunction(theta, X, y, Lambda):
@@ -13,4 +13,6 @@ def lrCostFunction(theta, X, y, Lambda):
     hx = sigmoid(theta.dot(X.T))
     J = np.sum(-1*y*np.log(hx) - (-1*y + 1)*np.log(1 - hx))
     J /= m
+    J += Lambda/(2*m)*theta[:1]**2
+
     return J

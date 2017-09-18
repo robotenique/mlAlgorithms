@@ -2,7 +2,7 @@ import numpy as np
 from scipy.optimize import minimize
 
 from lrCostFunction import lrCostFunction
-from regr import gradientFunctionReg
+from mlCalcs import gradientFunctionReg
 
 
 def oneVsAll(X, y, num_labels, Lambda):

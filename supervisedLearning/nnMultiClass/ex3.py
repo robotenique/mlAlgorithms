@@ -40,7 +40,12 @@ m, _ = X.shape
 # Randomly select 100 data points to display
 rand_indices = np.random.permutation(range(m))
 sel = X[rand_indices[0:100], :]
-
+theta = np.ones(X[0].size)
+grad = gradientFunctionReg(theta, X, y, 200)
+grad2 = gradientFunction(theta, X, y)
+print(grad == grad2)
+print(" ="*40)
+print(grad2)
 displayData(sel)
 
 input('Program paused. Press Enter to continue...')

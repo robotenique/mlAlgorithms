@@ -13,9 +13,13 @@ def gradientFunctionReg(theta, X, y, Lambda):
     computes the cost of using theta as the parameter for regularized logistic regression and the
     gradient of the cost w.r.t. to the parameters.
     """
-    m = len(y)   # number of training examples
-    grad = np.array([innerG(theta, X, y, j, Lambda, 1 if j != 0 else 0) for j in range(theta.size)])
-    return 1/m * grad
+    y = y[:, 0]
+    m = y.shape # number of training samples
+    grad = X.T.dot(sigmoid(theta.dot(X.T))-1*y)
+    grad[1:] = grad[1:] + Lambda*theta[1:]
+    grad /= m
+    
+    return grad
 
 def innerA(t, xi, yi, jth):
     return (sigmoid(t.dot(xi)) - yi) * xi[jth]
@@ -28,7 +32,7 @@ def gradientFunction(theta, X, y):
     gradient of the cost w.r.t. to the parameters.
     """
     y = y[:, 0]
-    m = y.shape # number of training samples        
+    m = y.shape # number of training samples
     grad = X.T.dot(sigmoid(theta.dot(X.T))-1*y)
     grad /= m
     return grad
