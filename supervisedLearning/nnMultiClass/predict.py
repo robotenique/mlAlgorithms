@@ -9,21 +9,23 @@ def predict(Theta1, Theta2, X):
     """ outputs the predicted label of X given the
     trained weights of a neural network (Theta1, Theta2)
     """
-
+    # TODO: fix this calculation...
     # Useful values
     m, _ = X.shape
     num_labels, _ = Theta2.shape
-
-    # ====================== YOUR CODE HERE ======================
-    # Instructions: Complete the following code to make predictions using
-    #               your learned neural network. You should set p to a
-    #               vector containing labels between 1 to num_labels.
-    #
-    # Hint: The max function might come in useful. In particular, the max
-    #       function can also return the index of the max element, for more
-    #       information see 'help max'. If your examples are in rows, then, you
-    #       can use max(A, [], 2) to obtain the max for each row.
-    #
-    # =========================================================================
+    p = np.zeros((m, 1))
+    # Add ones to the X data matrix, constructing the input layer
+    a1 = np.concatenate((X.T, np.ones((1, m)))).T
+    #a1 = np.column_stack((np.ones((m, 1)), X))
+    print(a1)
+    for i in range(m): # For our m examples
+        x = a1[i] # A picture of a number
+        print(x.shape)
+        # Hidden Layer
+        a2 = np.concatenate((sigmoid(Theta1 @ x.T), [1]))
+        # Output layer
+        hx = sigmoid(Theta2 @ a2.T)
+        # Get the highest probability
+        p[i] = np.argmax(hx)
 
     return p + 1  # add 1 to offset index of maximum in A row

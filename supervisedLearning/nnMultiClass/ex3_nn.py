@@ -16,10 +16,6 @@ hidden_layer_size = 25
 num_labels = 10
 
 #  =========== Part 1: Loading and Visualizing Data =============
-#  We start the exercise by first loading and visualizing the dataset.
-#  You will be working with a dataset that contains handwritten digits.
-#
-
 # Load Training Data
 print('Loading and Visualizing Data ...')
 
@@ -32,14 +28,11 @@ m, _ = X.shape
 sel = np.random.permutation(range(m))
 sel = sel[0:100]
 
-displayData(X[sel, :])
+#displayData(X[sel, :])
 
-input('Program paused. Press Enter to continue...')
+#input('Program paused. Press Enter to continue...')
 
-# ================ Part 2: Loading Pameters ================
-# In this part of the exercise, we load some pre-initialized
-# neural network parameters.
-
+# ================ Part 2: Loading Parameters ================
 print('Loading Saved Neural Network Parameters ...')
 
 # Load the weights into variables Theta1 and Theta2
@@ -54,6 +47,11 @@ Theta2 = data['Theta2']
 #  you compute the training set accuracy.
 
 pred = predict(Theta1, Theta2, X)
+y = np.squeeze(y)
+pred = np.squeeze(pred)
+leny = 0
+for i in range(leny):
+    print(f"PREDICTED = {pred[i]}, ORIG = {y[i]}")
 
 print('Training Set Accuracy: %f\n' % (np.mean(np.double(pred == np.squeeze(y))) * 100))
 
