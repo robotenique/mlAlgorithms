@@ -9,23 +9,26 @@ def predict(Theta1, Theta2, X):
     """ outputs the predicted label of X given the
     trained weights of a neural network (Theta1, Theta2)
     """
-    # TODO: fix this calculation...
     # Useful values
     m, _ = X.shape
     num_labels, _ = Theta2.shape
-    p = np.zeros((m, 1))
-    # Add ones to the X data matrix, constructing the input layer
-    a1 = np.concatenate((X.T, np.ones((1, m)))).T
-    #a1 = np.column_stack((np.ones((m, 1)), X))
-    print(a1)
-    for i in range(m): # For our m examples
-        x = a1[i] # A picture of a number
-        print(x.shape)
-        # Hidden Layer
-        a2 = np.concatenate((sigmoid(Theta1 @ x.T), [1]))
-        # Output layer
-        hx = sigmoid(Theta2 @ a2.T)
-        # Get the highest probability
-        p[i] = np.argmax(hx)
+    p = np.zeros(m)
+    # Important: The BIAS column goes FIRST! >:)
+    # Create the input layer matrix, adding the '1' bias feature
+    a1_matrix = np.concatenate((np.ones((m, 1)), X), axis=1).T
+    """ Create the hidden layer, multiplying Theta1 by the a1, then taking
+        the sigmoid of each entry. By this time, we have an n x m matrix,
+        where each column is the hidden layer z² with respect to each example.
+        Then, we add in the axis 0 a row of ones, in fact, this adds the BIAS
+        feature to the top of each hidden layer.
+    """
+    a2_matrix = np.concatenate((np.ones((1, m)), sigmoid(Theta1 @ a1_matrix)), axis=0)
+    """ We generate the output layer by multiplying Theta2 by the a2, then taking
+        the sigmoid of every entry. With this operation, all the columns in the
+        matrix are the hx of each example. To get the prediction, we get the index
+        of each column with the maximum value, for every column. So, we need to get
+        maximum value by the axis 0.
+    """
+    p = np.argmax(sigmoid(Theta2 @ a2_matrix), axis=0)
 
     return p + 1  # add 1 to offset index of maximum in A row
