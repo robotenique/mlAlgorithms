@@ -23,14 +23,16 @@ data = scipy.io.loadmat('ex3data1.mat')
 X = data['X']
 y = data['y']
 m, _ = X.shape
-
+X
+y
 # Randomly select 100 data points to display
 sel = np.random.permutation(range(m))
 sel = sel[0:100]
+sel
 
-#displayData(X[sel, :])
+displayData(X[sel, :])
 
-#input('Program paused. Press Enter to continue...')
+input('Program paused. Press Enter to continue...')
 
 # ================ Part 2: Loading Parameters ================
 print('Loading Saved Neural Network Parameters ...')
