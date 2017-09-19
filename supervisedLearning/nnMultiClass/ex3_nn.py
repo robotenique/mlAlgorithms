@@ -53,7 +53,7 @@ leny = 0
 for i in range(leny):
     print(f"PREDICTED = {pred[i]}, ORIG = {y[i]}")
 
-print('Training Set Accuracy: %f\n' % (np.mean(np.double(pred == np.squeeze(y))) * 100))
+print('Training Set Accuracy: %f\n' % (np.mean(np.double(pred == y)) * 100))
 
 input('Program paused. Press Enter to continue...')
 

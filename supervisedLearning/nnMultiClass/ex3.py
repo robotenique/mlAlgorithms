@@ -19,6 +19,8 @@ print('Loading and Visualizing Data ...')
 data = scipy.io.loadmat('ex3data1.mat')
 X = data['X']
 y = data['y']
+X
+y
 m, _ = X.shape
 
 # Randomly select 100 data points to display

@@ -11,7 +11,6 @@ def predict(Theta1, Theta2, X):
     """
     # Useful values
     m, _ = X.shape
-    num_labels, _ = Theta2.shape
     p = np.zeros(m)
     # Important: The BIAS column goes FIRST! >:)
     # Create the input layer matrix, adding the '1' bias feature
