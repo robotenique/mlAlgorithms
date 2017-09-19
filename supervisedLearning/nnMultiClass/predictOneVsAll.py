@@ -16,9 +16,12 @@ def predictOneVsAll(all_theta, X):
 
     # You need to return the following variables correctly
     p = np.zeros((m, 1))
-
     # Add ones to the X data matrix
     X = np.column_stack((np.ones((m, 1)), X))
+    class_prediction = (all_theta @ X.T).T
+
+    for i in range(m):
+        p[i] = np.argmax(class_prediction[i])
 
     # ====================== YOUR CODE HERE ======================
     # Instructions: Complete the following code to make predictions using
@@ -34,4 +37,4 @@ def predictOneVsAll(all_theta, X):
     #
     # =========================================================================
 
-    return p + 1    # add 1 to offset index of maximum in A row
+    return p    # add 1 to offset index of maximum in A row
