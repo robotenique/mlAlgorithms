@@ -40,8 +40,6 @@ all_theta = oneVsAll(X, y, num_labels, Lambda)
 input('Program paused. Press Enter to continue...')
 
 #  ================ Part 3: Predict for One-Vs-All ================
-#  After ...
-
 
 pred = predictOneVsAll(all_theta, X)
 y = np.squeeze(y)
