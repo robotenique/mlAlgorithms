@@ -35,10 +35,10 @@ m, _ = X.shape
 rand_indices = np.random.permutation(range(m))
 sel = X[rand_indices[0:100], :]
 
-displayData(sel)
+"""displayData(sel)
 
 input('Program paused. Press Enter to continue...')
-
+"""
 # ================ Part 2: Loading Parameters ================
 # In this part of the exercise, we load some pre-initialized
 # neural network parameters.
