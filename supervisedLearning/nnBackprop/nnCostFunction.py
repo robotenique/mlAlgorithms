@@ -1,6 +1,7 @@
 import numpy as np
-
-from ex2.sigmoid import sigmoid
+import sys
+sys.path.append("../")
+from nnMultiClass.mlCalcs import sigmoid
 from sigmoidGradient import sigmoidGradient
 
 

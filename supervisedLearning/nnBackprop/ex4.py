@@ -1,9 +1,10 @@
 import numpy as np
 import scipy.io
 from scipy.optimize import minimize
-
-from ex3.displayData import displayData
-from ex3.predict import predict
+import sys
+sys.path.append("../")
+from nnMultiClass.displayData import displayData
+from nnMultiClass.predict import predict
 from nnCostFunction import nnCostFunction
 from sigmoidGradient import sigmoidGradient
 from randInitializeWeights import randInitializeWeights
@@ -12,16 +13,15 @@ from checkNNGradients import checkNNGradients
 # Neural Network Learning
 
 # Setup the parameters you will use for this exercise
-# 20x20 Input Images of Digits
+# 20x20 input images of digits
 input_layer_size = 400
 # 25 hidden units
 hidden_layer_size = 25
-# 10 labels, from 1 to 10 (note that we have mapped "0" to label 10)
+# 10 labels, from 1 to 10 ("0" mapped to label 10)
 num_labels = 10
 
 #  =========== Part 1: Loading and Visualizing Data =============
-#  We start the exercise by first loading and visualizing the dataset.
-#  You will be working with a dataset that contains handwritten digits.
+# Loading and visualizing the dataset (handwritten digits)
 
 # Load Training Data
 print('Loading and Visualizing Data ...')
