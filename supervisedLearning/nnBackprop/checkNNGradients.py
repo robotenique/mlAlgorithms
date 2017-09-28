@@ -35,7 +35,6 @@ def checkNNGradients(Lambda=0):
     costFunc = lambda p: nnCostFunction(p, input_layer_size, hidden_layer_size,
                                         num_labels, X, y, Lambda)
     numgrad = computeNumericalGradient(costFunc, nn_params)
-    exit()
     grad = costFunc(nn_params)[1]
 
     # Visually examine the two gradient computations.  The two columns

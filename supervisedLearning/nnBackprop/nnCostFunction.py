@@ -32,22 +32,22 @@ def nnCostFunction(nn_params, input_layer_size, hidden_layer_size,
 
     Theta2 = np.reshape(nn_params[hidden_layer_size * (input_layer_size + 1):],
                         (num_labels, (hidden_layer_size + 1)), order='F').copy()
+
     ff = feed_forward(Theta1, Theta2, nn_params, input_layer_size,
          hidden_layer_size, num_labels, X, y)
     ff_result = ff[0].T
-
     m, _ = X.shape
+    val = lambda yi: yi - 1 if num_labels == 10 else yi
     y_matrix = np.array(
-                [np.arange(10) == y[i] - 1 for i in range(m)],
+                [np.arange(num_labels) == val(y[i]) for i in range(m)],
                 dtype=int
                )
-
     J = np.sum(
                 -y_matrix*np.log(ff_result)
                 -(1 - y_matrix)*np.log(1 - ff_result)
     )
     J /= m
-    #J += reg_term(Theta1, Theta2, m, Lambda)
+    J += reg_term(Theta1, Theta2, m, Lambda)
 
     # Calculating the gradient
     grad = np.zeros(m)
@@ -62,7 +62,8 @@ def nnCostFunction(nn_params, input_layer_size, hidden_layer_size,
     acc1 = (a1@err2).T
     derivative_1 = acc1/m
     derivative_2 = acc2/m
-
+    derivative_1[:, 1:] += Lambda*Theta1[:, 1:]/m
+    derivative_2[:, 1:] += Lambda*Theta2[:, 1:]/m
     grad = np.concatenate((derivative_1.ravel(), derivative_2.ravel()))
 
     return J, grad
