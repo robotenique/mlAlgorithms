@@ -1,5 +1,4 @@
 import numpy as np
-
 from debugInitializeWeights import debugInitializeWeights
 from computeNumericalGradient import computeNumericalGradient
 from nnCostFunction import nnCostFunction
@@ -35,8 +34,8 @@ def checkNNGradients(Lambda=0):
 
     costFunc = lambda p: nnCostFunction(p, input_layer_size, hidden_layer_size,
                                         num_labels, X, y, Lambda)
-
     numgrad = computeNumericalGradient(costFunc, nn_params)
+    exit()
     grad = costFunc(nn_params)[1]
 
     # Visually examine the two gradient computations.  The two columns
@@ -54,4 +53,3 @@ def checkNNGradients(Lambda=0):
     print('If your backpropagation implementation is correct, then\n '
           'the relative difference will be small (less than 1e-9). \n'
           '\nRelative Difference: %g\n' % diff)
-

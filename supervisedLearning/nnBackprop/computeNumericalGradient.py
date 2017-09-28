@@ -12,7 +12,9 @@ def computeNumericalGradient(J, theta):
     #        i-th input argument, evaluated at theta. (i.e., numgrad(i) should
     #        be the (approximately) the partial derivative of J with respect
     #        to theta(i).)
-
+    print(J)
+    print(theta)
+    
     numgrad = np.zeros(theta.shape[0])
     perturb = np.zeros(theta.shape[0])
     e = 1e-4
@@ -28,4 +30,3 @@ def computeNumericalGradient(J, theta):
         perturb[p] = 0
 
     return numgrad
-
