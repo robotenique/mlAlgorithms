@@ -64,6 +64,6 @@ def nnCostFunction(nn_params, input_layer_size, hidden_layer_size,
     derivative_2 = acc2/m
     derivative_1[:, 1:] += Lambda*Theta1[:, 1:]/m
     derivative_2[:, 1:] += Lambda*Theta2[:, 1:]/m
-    grad = np.concatenate((derivative_1.ravel(), derivative_2.ravel()))
+    grad = np.concatenate((derivative_1.T.ravel(), derivative_2.T.ravel()))
 
     return J, grad
