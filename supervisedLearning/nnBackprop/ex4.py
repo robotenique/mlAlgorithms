@@ -178,7 +178,7 @@ gradFunc = lambda p: nnCostFunction(p, input_layer_size, hidden_layer_size,
                                     num_labels, X, y, Lambda)[1]
 
 result = minimize(costFunc, initial_nn_params, method='CG',
-                  jac=gradFunc, options={'disp': True, 'maxiter': 50.0})
+                  jac=gradFunc, options={'disp': True, 'maxiter': 500.0})
 nn_params = result.x
 cost = result.fun
 
@@ -208,7 +208,7 @@ input('Program paused. Press Enter to continue...')
 #  you compute the training set accuracy.
 
 pred = predict(Theta1, Theta2, X)
-print(pred)
+
 accuracy = np.mean(np.double(pred == y)) * 100
 print('Training Set Accuracy: %f\n' % accuracy)
 
