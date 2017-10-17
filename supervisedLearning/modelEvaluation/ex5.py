@@ -1,6 +1,6 @@
-from show import show
-import scipy.io
 import matplotlib.pyplot as plt
+from matplotlib.pyplot import show
+import scipy.io
 import numpy as np
 
 from linearRegCostFunction import linearRegCostFunction
@@ -16,7 +16,7 @@ from validationCurve import validationCurve
 #
 #  Instructions
 #  ------------
-# 
+#
 #  This file contains code that helps you get started on the
 #  exercise. You will need to complete the following functions:
 #
@@ -28,14 +28,14 @@ from validationCurve import validationCurve
 #  or any other files other than those mentioned above.
 
 #  =========== Part 1: Loading and Visualizing Data =============
-#  We start the exercise by first loading and visualizing the dataset. 
+#  We start the exercise by first loading and visualizing the dataset.
 #  The following code will load the dataset into your environment and plot
 #  the data.
 
 # Load Training Data
 print('Loading and Visualizing Data ...')
 
-# Load from ex5data1: 
+# Load from ex5data1:
 # You will have X, y, Xval, yval, Xtest, ytest in your environment
 data = scipy.io.loadmat('ex5data1.mat')
 
@@ -49,15 +49,15 @@ Xtest = data['Xtest'][:, 0]
 m = X.size
 
 # Plot training data
-plt.scatter(X, y, marker='x', s=60, edgecolor='r', color='r', lw=1.5)
+"""plt.scatter(X, y, marker='x', s=60, edgecolor='r', color='r', lw=1.5)
 plt.ylabel('Water flowing out of the dam (y)')  # Set the y-axis label
 plt.xlabel('Change in water level (x)')  # Set the x-axis label
 show()
 
-input('Program paused. Press Enter to continue...')
+input('Program paused. Press Enter to continue...')"""
 
 #  =========== Part 2: Regularized Linear Regression Cost =============
-#  You should now implement the cost function for regularized linear 
+#  You should now implement the cost function for regularized linear
 #  regression.
 
 theta = np.array([1, 1])
@@ -68,7 +68,7 @@ print('Cost at theta = [1  1]: %f \n(this value should be about 303.993192)\n' %
 input('Program paused. Press Enter to continue...')
 
 #  =========== Part 3: Regularized Linear Regression Gradient =============
-#  You should now implement the gradient for regularized linear 
+#  You should now implement the gradient for regularized linear
 #  regression.
 
 theta = np.array([1, 1])
@@ -81,10 +81,10 @@ input('Program paused. Press Enter to continue...')
 
 #  =========== Part 4: Train Linear Regression =============
 #  Once you have implemented the cost and gradient correctly, the
-#  trainLinearReg function will use your cost function to train 
+#  trainLinearReg function will use your cost function to train
 #  regularized linear regression.
-# 
-#  Write Up Note: The data is non-linear, so this will not give a great 
+#
+#  Write Up Note: The data is non-linear, so this will not give a great
 #                 fit.
 
 #  Train linear regression with Lambda = 0
@@ -101,10 +101,10 @@ show()
 input('Program paused. Press Enter to continue...')
 
 #  =========== Part 5: Learning Curve for Linear Regression =============
-#  Next, you should implement the learningCurve function. 
+#  Next, you should implement the learningCurve function.
 #
 #  Write Up Note: Since the model is underfitting the data, we expect to
-#                 see a graph with "high bias" -- slide 8 in ML-advice.pdf 
+#                 see a graph with "high bias" -- slide 8 in ML-advice.pdf
 #
 
 Lambda = 0
@@ -161,7 +161,7 @@ input('Program paused. Press Enter to continue...')
 
 #  =========== Part 7: Learning Curve for Polynomial Regression =============
 #  Now, you will get to experiment with polynomial regression with multiple
-#  values of Lambda. The code below runs polynomial regression with 
+#  values of Lambda. The code below runs polynomial regression with
 #  Lambda = 0. You should try running the code with different values of
 #  Lambda to see how the fit and learning curve change.
 
@@ -201,7 +201,7 @@ for i in range(m):
 input('Program paused. Press Enter to continue...')
 
 #  =========== Part 8: Validation for Selecting Lambda =============
-#  You will now implement validationCurve to test various values of 
+#  You will now implement validationCurve to test various values of
 #  Lambda on a validation set. You will then use this to select the
 #  "best" Lambda value.
 
