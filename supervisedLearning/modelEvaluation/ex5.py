@@ -47,14 +47,14 @@ yval = data['yval'][:, 0]
 Xtest = data['Xtest'][:, 0]
 
 m = X.size
-
+"""
 # Plot training data
-"""plt.scatter(X, y, marker='x', s=60, edgecolor='r', color='r', lw=1.5)
+plt.scatter(X, y, marker='x', s=60, edgecolor='r', color='r', lw=1.5)
 plt.ylabel('Water flowing out of the dam (y)')  # Set the y-axis label
 plt.xlabel('Change in water level (x)')  # Set the x-axis label
 show()
 
-input('Program paused. Press Enter to continue...')"""
+input('Program paused. Press Enter to continue...')
 
 #  =========== Part 2: Regularized Linear Regression Cost =============
 #  You should now implement the cost function for regularized linear
@@ -113,15 +113,15 @@ error_train, error_val = learningCurve(np.column_stack((np.ones(m), X)), y,
                                        yval,
                                        Lambda=Lambda)
 plt.figure()
-plt.plot(range(m), error_train, color='b', lw=0.5, label='Train')
-plt.plot(range(m), error_val, color='g', lw=0.5, label='Cross Validation')
+plt.plot(range(1,m + 1), error_train, color='b', lw=2, label='Train')
+plt.plot(range(1,m + 1), error_val, color='g', lw=2, label='Cross Validation')
 plt.title('Learning Curve for Linear Regression')
 plt.legend()
 plt.xlabel('Number of training examples')
 plt.ylabel('Error')
 
 plt.xlim(0, 13)
-plt.ylim(0, 150)
+plt.ylim(0, max(np.concatenate((error_train, error_val))) + 10)
 plt.legend(loc='upper right', shadow=True, fontsize='x-large', numpoints=1)
 show()
 
@@ -129,7 +129,7 @@ print('Training Examples\tTrain Error\tCross Validation Error')
 for i in range(m):
     print('  \t%d\t\t%f\t%f' % (i, error_train[i], error_val[i]))
 
-input('Program paused. Press Enter to continue...')
+input('Program paused. Press Enter to continue...')"""
 
 #  =========== Part 6: Feature Mapping for Polynomial Regression =============
 #  One solution to this is to use polynomial regression. You should now
@@ -165,7 +165,7 @@ input('Program paused. Press Enter to continue...')
 #  Lambda = 0. You should try running the code with different values of
 #  Lambda to see how the fit and learning curve change.
 
-Lambda = 0
+Lambda = 0.1
 theta = trainLinearReg(X_poly, y, Lambda, method='BFGS', maxiter=10)
 
 # Plot training data and fit
@@ -183,13 +183,13 @@ input('Program paused. Press Enter to continue...')
 
 error_train, error_val = learningCurve(X_poly, y, X_poly_val, yval, Lambda)
 plt.figure()
-plt.plot(range(m), error_train, color='b', lw=0.5, label='Train')
-plt.plot(range(m), error_val, color='g', lw=0.5, label='Cross Validation')
+plt.plot(range(1, m + 1), error_train, color='b', lw=2, label='Train')
+plt.plot(range(1, m + 1), error_val, color='g', lw=2, label='Cross Validation')
 plt.title('Polynomial Regression Learning Curve (Lambda = %f)' % Lambda)
 plt.xlabel('Number of training examples')
 plt.ylabel('Error')
 plt.xlim(0, 13)
-plt.ylim(0, 150)
+plt.ylim(0,  max(np.concatenate((error_train, error_val))) + 10)
 plt.legend(loc='upper right', shadow=True, fontsize='x-large', numpoints=1)
 show()
 

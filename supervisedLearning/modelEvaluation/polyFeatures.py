@@ -7,12 +7,10 @@ def polyFeatures(X, p):
     X_poly(i, :) = [X(i) X(i).^2 X(i).^3 ...  X(i).^p]
     """
     # You need to return the following variables correctly.
-    X_poly = np.zeros((X.size, p))
-
-    # ====================== YOUR CODE HERE ======================
-    # Instructions: Given a vector X, return a matrix X_poly where the p-th
-    #               column of X contains the values of X to the p-th power.
-    #
-    # =========================================================================
+    X_poly = X.reshape(X.size, 1)
+    m = X_poly[:, 0].size
+    for i in range(p):
+        next_pow = (X_poly[:, X_poly.shape[1] - 1]*X_poly[:, 0]).reshape(m, 1)
+        X_poly = np.concatenate((X_poly, next_pow), axis=1)
 
     return X_poly
