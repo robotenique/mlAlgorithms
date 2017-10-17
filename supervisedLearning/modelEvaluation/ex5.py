@@ -45,9 +45,9 @@ y = data['y'][:, 0]
 Xval = data['Xval'][:, 0]
 yval = data['yval'][:, 0]
 Xtest = data['Xtest'][:, 0]
-
+ytest = data['ytest'][:, 0]
 m = X.size
-"""
+
 # Plot training data
 plt.scatter(X, y, marker='x', s=60, edgecolor='r', color='r', lw=1.5)
 plt.ylabel('Water flowing out of the dam (y)')  # Set the y-axis label
@@ -121,11 +121,11 @@ plt.xlabel('Number of training examples')
 plt.ylabel('Error')
 
 plt.xlim(0, 13)
-plt.ylim(0, max(np.concatenate((error_train, error_val))) + 10)
 plt.legend(loc='upper right', shadow=True, fontsize='x-large', numpoints=1)
 show()
 
 print('Training Examples\tTrain Error\tCross Validation Error')
+plt.ylim(0, max(np.concatenate((error_train, error_val))) + 10)
 for i in range(m):
     print('  \t%d\t\t%f\t%f' % (i, error_train[i], error_val[i]))
 
@@ -153,7 +153,7 @@ X_poly_val = polyFeatures(Xval, p)
 X_poly_val = X_poly_val - mu
 X_poly_val = X_poly_val / sigma
 X_poly_val = np.column_stack((np.ones(X_poly_test.shape[0]), X_poly_val))  # Add Ones
-
+"""
 print('Normalized Training Example 1:')
 print(X_poly[0, :])
 
@@ -199,7 +199,6 @@ for i in range(m):
     print('  \t%d\t\t%f\t%f' % (i, error_train[i], error_val[i]))
 
 input('Program paused. Press Enter to continue...')
-
 #  =========== Part 8: Validation for Selecting Lambda =============
 #  You will now implement validationCurve to test various values of
 #  Lambda on a validation set. You will then use this to select the
@@ -214,6 +213,17 @@ plt.title('Polynomial Regression Validation Curve')
 plt.xlabel('Lambda')
 plt.ylabel('Error')
 show()
+# Calculating the error on a TEST set never used before
+# using best_lambda found by validationCurve()
+best_lambda = 3.2832832832832834
+best_theta = trainLinearReg(X_poly, y, best_lambda)
+X_poly_test = polyFeatures(Xtest, p)
+X_poly_test = X_poly_test - mu
+X_poly_test = X_poly_test / sigma
+X_poly_test = np.column_stack((np.ones(X_poly_test.shape[0]), X_poly_test))  # Add Ones
+error_training, _ = linearRegCostFunction(X_poly_test, ytest, best_theta, 0)
+print(f"Error with best_lambda({best_lambda}) on test set = {error_training}")
+
 
 print('Lambda\t\tTrain Error\tValidation Error')
 for i in range(Lambda_vec.size):
