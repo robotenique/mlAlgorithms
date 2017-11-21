@@ -1,10 +1,21 @@
-> Anyone knows how much it costs to host a web portal ?
->
-Well, it depends on how many visitors you're expecting.
-This can be anywhere from less than 10 bucks a month to a couple of $100. 
-You should checkout http://www.rackspace.com/ or perhaps Amazon EC2 
-if youre running something big..
+Email Message:
 
-To unsubscribe yourself from this mailing list, send an email to:
-groupname-unsubscribe@egroups.com
+Dear Hiring Manager,
 
+It was with much interest that I read your April 8th [insert alternate date] job posting on Craigslist for an Assistant Communications Director. Your description of the work responsibilities incumbent upon your next Assistant Director closely match my experience, and so I am excited to submit my resume to you for your consideration.
+
+In my position as an Assistant Communications Director for ABC Company, I wrote articles for the company website, managed the editing and posting of contributing articles, managed their social media presence, and wrote and sent out a weekly email newsletter to subscribers. I also implemented an automated email tool that grew their subscriber base by 40% within six months.
+
+While Assistant Communications Director for Assemblyperson Janet Brown, I researched, drafted and amended legislation, wrote press releases, and was responsible for office communications and correspondence.
+
+My resume is attached. If I can provide you with any further information on my background and qualifications, please let me know.
+
+I look forward to hearing from you.
+
+Thank you for your consideration.
+
+John Doe
+Address
+Email
+Home Phone
+Cell Phone

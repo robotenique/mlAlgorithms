@@ -3,7 +3,7 @@
 #
 #  Instructions
 #  ------------
-# 
+#
 #  This file contains code that helps you get started on the
 #  exercise. You will need to complete the following functions:
 #
@@ -131,7 +131,7 @@ print('Program paused. Press enter to continue.')
 # Set the file to be read in (change this to spamSample2.txt,
 # emailSample1.txt or emailSample2.txt to see different predictions on
 # different emails types). Try your own emails as well!
-filename = 'spamSample1.txt'
+filename = 'emailSample1.txt'
 
 # Read and predict
 
@@ -143,4 +143,3 @@ p = model.predict(x)
 
 print('Processed %s\n\nSpam Classification: %d' % (filename, p))
 print('(1 indicates spam, 0 indicates not spam)')
-

@@ -6,16 +6,12 @@ from getVocabList import getVocabList
 
 
 def processEmail(email_contents):
-    """preprocesses a the body of an email and
-    returns a list of word_indices
-    word_indices = PROCESSEMAIL(email_contents) preprocesses
-    the body of an email and returns a list of indices of the
-    words contained in the email.
+    """preprocesses the body of an email and returns a list of word_indices
     """
 
     # Load Vocabulary
     vocabList = getVocabList()
-
+    vocabDict = {w: idx for idx, w in enumerate(vocabList)}
     # Init return value
     word_indices = []
 
@@ -86,28 +82,13 @@ def processEmail(email_contents):
         if len(str_token) < 1:
             continue
 
-        # Look up the word in the dictionary and add to word_indices if
-        # found
-        # ====================== YOUR CODE HERE ======================
-        # Instructions: Fill in this function to add the index of str to
-        #               word_indices if it is in the vocabulary. At this point
-        #               of the code, you have a stemmed word from the email in
-        #               the variable str. You should look up str in the
-        #               vocabulary list (vocabList). If a match exists, you
-        #               should add the index of the word to the word_indices
-        #               vector. Concretely, if str = 'action', then you should
-        #               look up the vocabulary list to find where in vocabList
-        #               'action' appears. For example, if vocabList{18} =
-        #               'action', then, you should add 18 to the word_indices
-        #               vector (e.g., word_indices = [word_indices  18] ).
-        #
-        # Note: vocabList{idx} returns a the word with index idx in the
-        #       vocabulary list.
-        #
-        # Note: You can use strcmp(str1, str2) to compare two strings (str1 and
-        #       str2). It will return 1 only if the two strings are equivalent.
-        #
-        # =============================================================
+        # Get index
+        idx = vocabDict.get(str_token, -1)
+        # Skip the word if not in the dict
+        if idx == -1:
+            continue
+
+        word_indices.append(idx)
 
         # Print to screen, ensuring that the output lines are not too long
         if (l + len(str_token) + 1) > 78:
