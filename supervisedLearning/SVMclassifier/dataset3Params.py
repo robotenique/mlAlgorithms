@@ -7,7 +7,15 @@ def dataset3Params(X, y, Xval, yval):
     this function to return the optimal C and sigma based on a
     cross-validation set.
     """
-
+    vals = np.array(map(lambda a: 0.01*3**a, range(7)))
+    best_C = 0
+    best_sigma = 0
+    gamma = lambda sigma : 1/(2*sigma**2)
+    for C in vals:
+        for sigma in vals:
+            clf = svm.SVC(C=C, kernel='rbf', tol=1e-3, max_iter=2000, gamma=gamma(sigma))
+            model = clf.fit(X, y)
+            
     # You need to return the following variables correctly.
     C = 1
     sigma = 0.3
