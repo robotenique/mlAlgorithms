@@ -1,5 +1,5 @@
 import numpy as np
-import sklearn.svm
+import sklearn.svm as svm
 
 
 def dataset3Params(X, y, Xval, yval):
@@ -7,30 +7,20 @@ def dataset3Params(X, y, Xval, yval):
     this function to return the optimal C and sigma based on a
     cross-validation set.
     """
-    vals = np.array(map(lambda a: 0.01*3**a, range(7)))
+    vals = np.array(list(map(lambda a: 0.01*3**a, range(7))))
     best_C = 0
     best_sigma = 0
+    best_val = -1
     gamma = lambda sigma : 1/(2*sigma**2)
     for C in vals:
         for sigma in vals:
             clf = svm.SVC(C=C, kernel='rbf', tol=1e-3, max_iter=2000, gamma=gamma(sigma))
             model = clf.fit(X, y)
-            
-    # You need to return the following variables correctly.
-    C = 1
-    sigma = 0.3
+            acc = np.sum(np.where(model.predict(Xval) == yval, 1, 0))/len(yval)
+            print(acc)
+            if acc > best_val:
+                best_val = acc
+                best_C = C
+                best_sigma = sigma
 
-    # ====================== YOUR CODE HERE ======================
-    # Instructions: Fill in this function to return the optimal C and sigma
-    #               learning parameters found using the cross validation set.
-    #               You can use svmPredict to predict the labels on the cross
-    #               validation set. For example,
-    #                   predictions = svmPredict(model, Xval)
-    #               will return the predictions on the cross validation set.
-    #
-    #  Note: You can compute the prediction error using
-    #        mean(double(predictions ~= yval))
-    #
-    # =========================================================================
-
-    return C, sigma
+    return best_C, best_sigma

@@ -62,7 +62,7 @@ model = clf.fit(X, y)
 visualizeBoundaryLinear(X, y, model)
 show()
 
-input('Program paused. Press Enter to continue...')"""
+input('Program paused. Press Enter to continue...')
 
 #  =============== Part 3: Implementing Gaussian Kernel ===============
 #  You will now implement the Gaussian kernel to use
@@ -122,7 +122,7 @@ model = clf.fit(X, y)
 visualizeBoundary(X, y, model)
 show()
 
-input('Program paused. Press Enter to continue...')
+input('Program paused. Press Enter to continue...')"""
 
 #  =============== Part 6: Visualizing Dataset 3 ================
 #  The following code will load the next dataset into your environment and
@@ -152,9 +152,8 @@ yval = data['yval'].flatten()
 # Try different SVM Parameters here
 C, sigma = dataset3Params(X, y, Xval, yval)
 gamma = 1.0 / (2.0 * sigma ** 2)
-
 # Train the SVM
-clf = svm.SVC(C=C, kernel='rbf', tol=1e-3, max_iter=200, gamma=gamma)
+clf = svm.SVC(C=C, kernel='rbf', tol=1e-1, max_iter=29000, gamma=gamma)
 model = clf.fit(X, y)
 visualizeBoundary(X, y, model)
 show()
