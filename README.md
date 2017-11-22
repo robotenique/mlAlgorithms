@@ -1,5 +1,5 @@
 # mlAlgorithms
-Machine Learning algorithms in practice, from programming tasks of the Machine Learning course by Andrew Ng, in **Python** <3
+Machine Learning algorithms in practice, from programming tasks of the Machine Learning course by Andrew Ng, in **Python**
 
 ## Supervised
 #### 1. gradDescent
