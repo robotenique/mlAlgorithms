@@ -30,7 +30,7 @@ A study in model evaluation, for visualizing the different effects of the regula
 <p align="center"> <img src="https://www.safaribooksonline.com/library/view/hands-on-machine-learning/9781491962282/assets/mlst_04in04.png" width="450"/></p>
 
 #### 6. SVMclassifier
-Linear [SVM](https://en.wikipedia.org/wiki/Support_vector_machine) classifier and non linear SVM (with [rbf kernel](https://en.wikipedia.org/wiki/Radial_basis_function_kernel)), using *sklearn.svm.SVC* from *scikit-learn*, and also a simple implementation of [hyperparameter](https://en.wikipedia.org/wiki/Hyperparameter) grid search for the . Also, implements an e-mail spam classifier using the [Porter Stemming](https://en.wikipedia.org/wiki/Stemming) algorithm, and mapping the most used words in the dataset ([Apache SpamAssassin](http://spamassassin.apache.org/)) to numbers. 
+Linear [SVM](https://en.wikipedia.org/wiki/Support_vector_machine) classifier and non linear SVM (with [rbf kernel](https://en.wikipedia.org/wiki/Radial_basis_function_kernel)), using *sklearn.svm.SVC* from *scikit-learn*, and also a simple implementation of [hyperparameter](https://en.wikipedia.org/wiki/Hyperparameter) grid search for the . Also, implements an e-mail spam classifier using the [Porter Stemming](https://en.wikipedia.org/wiki/Stemming) algorithm, and mapping the most used words in the dataset ([Apache SpamAssassin](http://spamassassin.apache.org/)) to numbers as feature mapping. 
 
 <p align="center"> <img src="http://scikit-learn.org/stable/_images/sphx_glr_plot_iris_001.png" width="450"/></p>
 
