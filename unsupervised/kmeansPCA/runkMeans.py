@@ -18,7 +18,7 @@ def runkMeans(X, initial_centroids, max_iters, plot_progress=False):
     centroids, a Kxn matrix of the computed centroids and idx, a m x 1
     vector of centroid assignments (i.e. each entry in range [1..K])
     """
-    
+    plot_progress = False
     # Plot the data if we are plotting progress
     if plot_progress:
         fig = plt.figure()
@@ -50,6 +50,7 @@ def runkMeans(X, initial_centroids, max_iters, plot_progress=False):
                                idx, K, i, color, ax)
             previous_centroids = centroids
             show()
+            #fig.canvas.draw()
 
 
         # Given the memberships, compute new centroids

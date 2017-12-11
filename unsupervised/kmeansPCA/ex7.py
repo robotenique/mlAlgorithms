@@ -1,26 +1,5 @@
-#  Machine Learning Online Class
 #  Exercise 7 | Principle Component Analysis and K-Means Clustering
-#
-#  Instructions
-#  ------------
-#
-#  This file contains code that helps you get started on the
-#  exercise. You will need to complete the following functions:
-#
-#     pca.m
-#     projectData.m
-#     recoverData.m
-#     computeCentroids.m
-#     findClosestCentroids.m
-#     kMeansInitCentroids.m
-#
-#  For this exercise, you will not need to change any code in this file,
-#  or any other files other than those mentioned above.
-
 #  ================= Part 1: Find Closest Centroids ====================
-#  To help you implement K-Means, we have divided the learning algorithm
-#  into two functions -- findClosestCentroids and computeCentroids. In this
-#  part, you shoudl complete the code in the findClosestCentroids function.
 
 from matplotlib import use, cm
 use('TkAgg')
@@ -57,8 +36,6 @@ print('(the closest centroids should be 0, 2, 1 respectively)')
 input('Program paused. Press Enter to continue...')
 
 #  ===================== Part 2: Compute Means =========================
-#  After implementing the closest centroids function, you should now
-#  complete the computeCentroids function.
 
 print('Computing centroids means.')
 
@@ -78,10 +55,6 @@ input('Program paused. Press Enter to continue...')
 
 
 #  =================== Part 3: K-Means Clustering ======================
-#  After you have completed the two functions computeCentroids and
-#  findClosestCentroids, you have all the necessary pieces to run the
-#  kMeans algorithm. In this part, you will run the K-Means algorithm on
-#  the example dataset we have provided.
 
 print('Running K-Means clustering on example dataset.')
 
@@ -107,16 +80,11 @@ print('K-Means Done.')
 input('Program paused. Press Enter to continue...')
 
 #  ============= Part 4: K-Means Clustering on Pixels ===============
-#  In this exercise, you will use K-Means to compress an image. To do this,
-#  you will first run K-Means on the colors of the pixels in the image and
-#  then you will map each pixel on to it's closest centroid.
-#
-#  You should now complete the code in kMeansInitCentroids.m
 
 print('Running K-Means clustering on pixels from an image.')
 
 # Load an image of a bird
-A = scipy.misc.imread('bird_small.png')
+A = scipy.misc.imread('coisa.jpg')
 
 # If imread does not work for you, you can try instead
 #   load ('bird_small.mat')
@@ -133,7 +101,7 @@ X = A.reshape(img_size[0] * img_size[1], 3)
 
 # Run your K-Means algorithm on this data
 # You should try different values of K and max_iters here
-K = 16
+K = 8
 max_iters = 10
 
 # When using K-Means, it is important the initialize the centroids
