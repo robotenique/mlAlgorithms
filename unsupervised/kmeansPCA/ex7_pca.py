@@ -1,21 +1,4 @@
-#  Machine Learning Online Class
 #  Exercise 7 | Principle Component Analysis and K-Means Clustering
-#
-#  Instructions
-#  ------------
-#
-#  This file contains code that helps you get started on the
-#  exercise. You will need to complete the following functions:
-#
-#     pca.m
-#     projectData.m`
-#     recoverData.m
-#     computeCentroids.m
-#     findClosestCentroids.m
-#     kMeansInitCentroids.m
-#
-#  For this exercise, you will not need to change any code in this file,
-#  or any other files other than those mentioned above.
 
 from matplotlib import use
 use('TkAgg')
@@ -32,12 +15,10 @@ from recoverData import recoverData
 from kMeansInitCentroids import kMeansInitCentroids
 from runkMeans import runkMeans
 from plotDataPoints import plotDataPoints
-from ex3.displayData import displayData
-from show import show
+from displayData import displayData
+from matplotlib.pyplot import show
 
 #  ================== Part 1: Load Example Dataset  ===================
-#  We start this exercise by using a small dataset that is easily to
-#  visualize
 
 print('Visualizing example dataset for PCA.')
 # The following command loads the dataset. You should now have the
@@ -46,17 +27,15 @@ data = scipy.io.loadmat('ex7data1.mat')
 X = data['X']
 
 # Visualize the example dataset
-plt.figure()
+"""plt.figure()
 plt.scatter(X[:, 0], X[:, 1], marker='o', color='b', facecolors='none', lw=1.0)
 plt.axis([0.5, 6.5, 2, 8])
 plt.axis('equal')
-show()
+show()"""
 
 input('Program paused. Press Enter to continue...')
 
 #  =============== Part 2: Principal Component Analysis ===============
-#  You should now implement PCA, a dimension reduction technique. You
-#  should complete the code in pca.m
 
 print('Running PCA on example dataset.')
 
@@ -71,13 +50,13 @@ U, S, V = pca(X_norm)
 # Draw the eigenvectors centered at mean of data. These lines show the
 # directions of maximum variations in the dataset.
 mu2 = mu + 1.5 * S.dot(U.T)
-plt.figure()
+"""plt.figure()
 plt.scatter(X[:, 0], X[:, 1], marker='o', color='b', facecolors='none', lw=1.0)
 plt.axis([0.5, 6.5, 2, 8])
 plt.axis('equal')
 plt.plot([mu[0], mu2[0, 0]], [mu[1], mu2[0, 1]], '-k', lw=2)
 plt.plot([mu[0], mu2[1, 0]], [mu[1], mu2[1, 1]], '-k', lw=2)
-show()
+show()"""
 
 print('Top eigenvector: ')
 print(' U(:,1) = %f %f ' % (U[0, 0], U[1, 0]))
@@ -86,12 +65,6 @@ print('(you should expect to see -0.707107 -0.707107)')
 input('Program paused. Press Enter to continue...')
 
 #  =================== Part 3: Dimension Reduction ===================
-#  You should now implement the projection step to map the data onto the 
-#  first k eigenvectors. The code will then plot the data in this reduced 
-#  dimensional space.  This will show you what the data looks like when 
-#  using only the corresponding eigenvectors to reconstruct it.
-#
-#  You should complete the code in projectData.m
 
 print('Dimension reduction on example dataset.')
 
@@ -122,8 +95,6 @@ show()
 input('Program paused. Press Enter to continue...')
 
 #  =============== Part 4: Loading and Visualizing Face Data =============
-#  We start the exercise by first loading and visualizing the dataset.
-#  The following code will load the dataset into your environment
 
 print('Loading face dataset.')
 
@@ -138,8 +109,6 @@ displayData(X[0:100, :])
 input('Program paused. Press Enter to continue...')
 
 #  =========== Part 5: PCA on Face Data: Eigenfaces  ===================
-#  Run PCA and visualize the eigenvectors which are in this case eigenfaces
-#  We display the first 36 eigenfaces.
 
 print('Running PCA on face dataset.\n(this might take a minute or two ...)\n\n')
 
@@ -157,8 +126,6 @@ displayData(U[:, 1:36].T)
 input('Program paused. Press Enter to continue...')
 
 #  ============= Part 6: Dimension Reduction for Faces =================
-#  Project images to the eigen space using the top k eigenvectors 
-#  If you are applying a machine learning algorithm 
 print('Dimension reduction for face dataset.')
 
 K = 100
@@ -170,9 +137,6 @@ print('%d %d' % Z.shape)
 input('Program paused. Press Enter to continue...')
 
 #  ==== Part 7: Visualization of Faces after PCA Dimension Reduction ====
-#  Project images to the eigen space using the top K eigen vectors and 
-#  visualize only using those K dimensions
-#  Compare to the original input, which is also displayed
 
 print('Visualizing the projected (reduced dimension) faces.')
 
@@ -195,14 +159,7 @@ show()
 input('Program paused. Press Enter to continue...')
 
 
-#  === Part 8(a): Optional (ungraded) Exercise: PCA for Visualization ===
-#  One useful application of PCA is to use it to visualize high-dimensional
-#  data. In the last K-Means exercise you ran K-Means on 3-dimensional 
-#  pixel colors of an image. We first visualize this output in 3D, and then
-#  apply PCA to obtain a visualization in 2D.
-
-# Re-load the image from the previous exercise and run K-Means on it
-# For this to work, you need to complete the K-Means assignment first
+#  === Part 8 -  PCA for Visualization ===
 A = scipy.misc.imread('bird_small.png')
 
 # If imread does not work for you, you can try instead
@@ -211,7 +168,7 @@ A = scipy.misc.imread('bird_small.png')
 A = A / 255.0
 img_size = A.shape
 X = A.reshape(img_size[0] * img_size[1], 3)
-K = 16 
+K = 16
 max_iters = 10
 initial_centroids = kMeansInitCentroids(X, K)
 centroids, idx = runkMeans(X, initial_centroids, max_iters)
@@ -243,7 +200,7 @@ plt.title('Pixel dataset plotted in 3D. Color shows centroid memberships')
 show()
 input('Program paused. Press Enter to continue...')
 
-#  === Part 8(b): Optional (ungraded) Exercise: PCA for Visualization ===
+#  === Part 8 -  PCA for Visualization ===
 #  Use PCA to project this cloud to 2D for visualization
 
 # Subtract the mean to use PCA
