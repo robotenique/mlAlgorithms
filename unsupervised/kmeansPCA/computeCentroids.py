@@ -17,15 +17,8 @@ def computeCentroids(X, idx, K):
 
     # You need to return the following variables correctly.
     centroids = []
-
-    # ====================== YOUR CODE HERE ======================
-    # Instructions: Go over every centroid and compute mean of all points that
-    #               belong to it. Concretely, the row vector centroids(i, :)
-    #               should contain the mean of the data points assigned to
-    #               centroid i.
-    #
-    # Note: You can use a for-loop over the centroids to compute this.
-    #
-    # =============================================================
+    for c in range(K):        
+        clist = [X[p] for p, i in enumerate(idx) if i == c]
+        centroids.append(np.sum(clist, axis=0)/len(clist))
 
     return centroids
