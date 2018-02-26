@@ -84,7 +84,7 @@ input('Program paused. Press Enter to continue...')
 print('Running K-Means clustering on pixels from an image.')
 
 # Load an image of a bird
-A = scipy.misc.imread('coisa.jpg')
+A = scipy.misc.imread('bird_small.png')
 
 # If imread does not work for you, you can try instead
 #   load ('bird_small.mat')

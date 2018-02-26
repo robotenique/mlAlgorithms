@@ -7,5 +7,4 @@ def recoverData(Z, U, K):
     original data that has been reduced to K dimensions. It returns the
     approximate reconstruction in X_rec.
     """
-    print(Z)
     return (U[:, :K]@Z.T).T
